@@ -35,7 +35,7 @@ call_aihw_api <- function(api_url) {
   resp <- httr2::req_perform(req)
 
   # Check for errors based on the status code
-  resp_check_status(resp)
+  httr2::resp_check_status(resp)
 
   if (is_body_xlsx(resp)) {
     fpath <- write_resp(resp)

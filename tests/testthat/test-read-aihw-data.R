@@ -1,4 +1,5 @@
 test_that("can read admissions data", {
+  skip_if_offline()
   d_adms <- call_aihw_api("measure-downloads/myh-adm")
 
   # returns data

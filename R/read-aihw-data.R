@@ -8,10 +8,10 @@ read_aihw_xlsx <- function(path) {
 }
 
 is_body_xlsx <- function(resp) {
-  stringr::str_detect(resp_content_type(resp), "spreadsheetml.sheet")
+  stringr::str_detect(httr2::resp_content_type(resp), "spreadsheetml.sheet")
 }
 
 write_resp <- function(resp, file = tempfile(fileext = "xlsx")) {
-  writeBin(resp_body_raw(resp), file)
+  writeBin(httr2::resp_body_raw(resp), file)
   file
 }
