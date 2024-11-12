@@ -14,7 +14,13 @@ status](https://www.r-pkg.org/badges/version/readaihw)](https://CRAN.R-project.o
 coverage](https://codecov.io/gh/RWParsons/readaihw/graph/badge.svg)](https://app.codecov.io/gh/RWParsons/readaihw)
 <!-- badges: end -->
 
-The goal of readaihw is to …
+The purpose of `readaihw` is to provide access to the MyHospitals API so
+that data from the AIHW can be accessed directly from R. For details
+about what data are provided by the AIHW see
+[here](https://www.aihw.gov.au/about-our-data/our-data-collections). See
+[here](https://www.aihw.gov.au/reports-data/myhospitals/content/api) for
+details about the [MyHospital
+API](https://myhospitalsapi.aihw.gov.au/index.html).
 
 ## Installation
 

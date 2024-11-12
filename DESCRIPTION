@@ -4,7 +4,8 @@ Version: 0.0.0.9000
 Authors@R: 
     person("Rex", "Parsons", , "rex.parsons94@gmaqil.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6053-8174"))
-Description: Provides a wrapper around the MyHospitals API so that it can be accessed directly from R.
+Description: Uses the MyHospitals API so that data from the AIHW can be 
+    accessed from R.
 License: MIT + file LICENSE
 Suggests: 
     testthat (>= 3.0.0)
