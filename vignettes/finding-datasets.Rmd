@@ -24,35 +24,30 @@ library(stringr)
 
 ```{r}
 # get the available datasets
-d_datasets <- get_datasets() |> 
+d_datasets <- get_datasets() |>
   rename(
     measure_code = reported_measure_summary_measure_summary_measure_code,
-    measure_name = reported_measure_summary_measure_summary_measure_name, 
+    measure_name = reported_measure_summary_measure_summary_measure_name,
     condition_code = reported_measure_summary_reported_measure_code,
     condition_name = reported_measure_summary_reported_measure_name
   )
 
 # search the condition_name for Mental Health related string
-d_datasets |> 
-  filter(str_detect(tolower(condition_name), "mental")) |> 
+d_datasets |>
+  filter(str_detect(tolower(condition_name), "mental")) |>
   glimpse()
 
 # extract the dataset IDs
-dataset_ids <- d_datasets |> 
-  filter(str_detect(tolower(condition_name), "mental")) |> 
+dataset_ids <- d_datasets |>
+  filter(str_detect(tolower(condition_name), "mental")) |>
   pull(data_set_id)
 
 # read and combine the dataset_ids
 d_mental_health_admissions <- read_dataset_ids(dataset_ids)
 
 # aggregate by reporting period
-d_mental_health_admissions |> 
-  group_by(reporting_start_date, reporting_end_date) |> 
+d_mental_health_admissions |>
+  group_by(reporting_start_date, reporting_end_date) |>
   summarize(mental_health_admission_n = sum(as.numeric(value), na.rm = TRUE))
 ```
-
-
-
-
-
 

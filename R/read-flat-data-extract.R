@@ -64,8 +64,8 @@ call_flat_data_segment <- function(url, skip, top, measure_code_str) {
 }
 
 tidy_flat_data_extract <- function(data, return_caveats) {
-  if (any(str_detect(names(data), "caveat"))) {
-    if("caveat" %in% names(data)) {
+  if (any(stringr::str_detect(names(data), "caveat"))) {
+    if ("caveat" %in% names(data)) {
       d_caveats <- data |>
         dplyr::select(caveat:dplyr::last_col()) |>
         dplyr::filter(!is.na(caveat))
@@ -82,7 +82,7 @@ tidy_flat_data_extract <- function(data, return_caveats) {
         ) |>
         dplyr::distinct()
 
-      d_caveats <- d_caveats[!is.na(d_caveats[[1]]),]
+      d_caveats <- d_caveats[!is.na(d_caveats[[1]]), ]
 
       data <- data |>
         dplyr::select(-dplyr::all_of(names(d_caveats)[-1])) |>

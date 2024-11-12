@@ -15,8 +15,8 @@ coverage](https://codecov.io/gh/RWParsons/readaihw/graph/badge.svg)](https://app
 <!-- badges: end -->
 
 The purpose of `readaihw` is to provide access to the MyHospitals API so
-that data from the AIHW can be accessed directly from R. For details
-about what data are provided by the AIHW see
+that hospital data from the AIHW can be accessed directly from R. For
+details about what data are provided by the AIHW see
 [here](https://www.aihw.gov.au/about-our-data/our-data-collections). See
 [here](https://www.aihw.gov.au/reports-data/myhospitals/content/api) for
 details about the [MyHospital
@@ -44,22 +44,22 @@ library(ggplot2)
 
 ed_presentations <- read_flat_data_extract("MYH-ED")
 
-act_hospital_codes <- get_hospital_mappings() |> 
+act_hospital_codes <- get_hospital_mappings() |>
   filter(
     local_hospital_network_lhn == "Australian Capital Territory",
     type == "Hospital"
-  ) |> 
+  ) |>
   pull(code)
 
-ed_presentations |> 
-  filter(reporting_unit_code %in% act_hospital_codes) |> 
-  select(date = reporting_end_date, hospital = reporting_unit_name, value) |> 
-  mutate(value = as.numeric(value), date = lubridate::ymd(date)) |> 
-  summarize(count = sum(value, na.rm = TRUE), .by = c(hospital, date)) |> 
+ed_presentations |>
+  filter(reporting_unit_code %in% act_hospital_codes) |>
+  select(date = reporting_end_date, hospital = reporting_unit_name, value) |>
+  mutate(value = as.numeric(value), date = lubridate::ymd(date)) |>
+  summarize(count = sum(value, na.rm = TRUE), .by = c(hospital, date)) |>
   ggplot(aes(date, count)) +
   geom_line() +
   geom_point() +
-  facet_wrap(~stringr::str_wrap(hospital, 40)) +
+  facet_wrap(~ stringr::str_wrap(hospital, 40)) +
   theme_bw() +
   scale_y_continuous(labels = scales::label_comma()) +
   labs(x = "", y = "ED Presentations (n)", title = "ED presentations in the ACT LHN")

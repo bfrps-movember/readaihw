@@ -8,13 +8,15 @@
 #' @export
 #'
 #' @examples
+#' \donttest{
 #' get_measures_from_category("MYH-CANCER")
+#' }
 get_measures_from_category <- function(measure_category_code, trim = TRUE) {
   url <- as.character(glue::glue("measure-categories/{measure_category_code}/measures"))
   d <- call_aihw_api(url)$result |>
     tidy_resp_to_df()
 
-  if(trim) {
+  if (trim) {
     d <- d |>
       dplyr::select(measure_code, measure_name, units = units_units_name)
   }
@@ -34,12 +36,14 @@ get_measures_from_category <- function(measure_category_code, trim = TRUE) {
 #' @export
 #'
 #' @examples
-#' read_dataset_ids(c(1,2))
+#' \donttest{
+#' read_dataset_ids(c(1, 2))
+#' }
 read_dataset_ids <- function(ids, return_caveats = FALSE) {
   d_datasets <- get_datasets() |>
     dplyr::filter(data_set_id %in% ids)
 
-  if(any(!ids %in% d_datasets$data_set_id)) {
+  if (any(!ids %in% d_datasets$data_set_id)) {
     missing_ids <- ids[!ids %in% d_datasets$data_set_id] |>
       paste0(collapse = ", ")
     warning(glue::glue("IDs passed were not valid (available in `get_datasets()`): {missing_ids}"))
@@ -50,7 +54,7 @@ read_dataset_ids <- function(ids, return_caveats = FALSE) {
     dplyr::bind_rows() |>
     tidy_flat_data_extract(return_caveats = return_caveats)
 
-  dplyr::left_join(d_datasets, dframes)
+  dplyr::left_join(d_datasets, dframes, by = "data_set_id")
 }
 
 

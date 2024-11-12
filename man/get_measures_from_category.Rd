@@ -19,5 +19,7 @@ data
 Find the available measures within a measure category.
 }
 \examples{
+\donttest{
 get_measures_from_category("MYH-CANCER")
+}
 }

@@ -20,5 +20,7 @@ data
 Read (multiple) datasets by id
 }
 \examples{
-read_dataset_ids(c(1,2))
+\donttest{
+read_dataset_ids(c(1, 2))
+}
 }

@@ -7,6 +7,10 @@ NULL
 
 utils::globalVariables(
   c(
-    "caveat"
+    "caveat",
+    "data_set_id",
+    "measure_code",
+    "measure_name",
+    "units_units_name"
   )
 )
