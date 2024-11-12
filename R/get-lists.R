@@ -1,8 +1,14 @@
-tidy_resp_to_df <- function(result) {
-  result |>
-    purrr::map(unlist) |>
-    dplyr::bind_rows() |>
-    janitor::clean_names()
+#' Get mappings and locations for hospitals.
+#'
+#' @return data
+#' @export
+#'
+#' @examples
+#' \donttest{
+#' get_hospital_mappings()
+#' }
+get_hospital_mappings <- function() {
+  call_aihw_api("reporting-units-downloads/mappings")
 }
 
 #' Get set of measure categories which can be used in `read_flat_data_extract()`.
@@ -123,6 +129,13 @@ read_flat_data_extract <- function(measure_category_code, measure_code, return_c
   dframes |>
     dplyr::bind_rows() |>
     tidy_flat_data_extract(return_caveats = return_caveats)
+}
+
+tidy_resp_to_df <- function(result) {
+  result |>
+    purrr::map(unlist) |>
+    dplyr::bind_rows() |>
+    janitor::clean_names()
 }
 
 call_flat_data_segment <- function(url, skip, top, measure_code_str) {

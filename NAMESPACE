@@ -2,6 +2,7 @@
 
 export(call_aihw_api)
 export(get_datasets)
+export(get_hospital_mappings)
 export(get_measure_categories)
 export(get_measure_data)
 export(get_measure_download_codes)
