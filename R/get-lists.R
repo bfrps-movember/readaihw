@@ -1,4 +1,4 @@
-tidy_resp_to_df <- function(result){
+tidy_resp_to_df <- function(result) {
   result |>
     purrr::map(unlist) |>
     dplyr::bind_rows() |>
@@ -89,7 +89,7 @@ read_flat_data_extract <- function(measure_category_code, measure_code, return_c
   assertthat::assert_that(measure_category_code %in% get_measure_categories()$measure_category_code)
 
   measure_code_str <- ""
-  if(!missing(measure_code)) {
+  if (!missing(measure_code)) {
     assertthat::assert_that(assertthat::is.string(measure_code))
 
     # bit of an expensive assertion to make so have commented it out - hopefully
@@ -108,11 +108,11 @@ read_flat_data_extract <- function(measure_category_code, measure_code, return_c
   total_rows <- res$result$pagination$total_results_available
 
   skips <- seq(from = 0, to = total_rows - 1, by = max_rows)
-  tops <- purrr::map(skips, ~min(c(max_rows, total_rows - .x)))
+  tops <- purrr::map(skips, ~ min(c(max_rows, total_rows - .x)))
 
   dframes <- purrr::map2(
     .x = skips, .y = tops,
-    .f = ~call_flat_data_segment(
+    .f = ~ call_flat_data_segment(
       url = paste0("flat-data-extract/", measure_category_code),
       measure_code_str = measure_code_str,
       skip = .x,
@@ -131,7 +131,7 @@ call_flat_data_segment <- function(url, skip, top, measure_code_str) {
 }
 
 tidy_flat_data_extract <- function(data, return_caveats) {
-  if("caveat" %in% names(data)) {
+  if ("caveat" %in% names(data)) {
     d_caveats <- data |>
       dplyr::select(caveat:dplyr::last_col()) |>
       dplyr::filter(!is.na(caveat))
@@ -142,7 +142,7 @@ tidy_flat_data_extract <- function(data, return_caveats) {
       dplyr::select(-caveat)
   }
 
-  if(return_caveats) {
+  if (return_caveats) {
     res <- list(data = data, d_caveats = d_caveats)
   } else {
     res <- data
