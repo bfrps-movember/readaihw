@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-lists.R
 \name{get_measure_download_codes}
 \alias{get_measure_download_codes}
-\title{Title}
+\title{Get set of measure download codes that can be used in \code{get_measure_data()}.}
 \usage{
 get_measure_download_codes()
 }
@@ -10,8 +10,10 @@ get_measure_download_codes()
 data
 }
 \description{
-Title
+Get set of measure download codes that can be used in \code{get_measure_data()}.
 }
 \examples{
-get_datasets()
+\donttest{
+get_measure_download_codes()
+}
 }

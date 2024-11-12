@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-lists.R
 \name{read_flat_data_extract}
 \alias{read_flat_data_extract}
-\title{insert title}
+\title{Get data by measure category.}
 \usage{
 read_flat_data_extract(
   measure_category_code,
@@ -11,18 +11,24 @@ read_flat_data_extract(
 )
 }
 \arguments{
-\item{measure_category_code}{test}
+\item{measure_category_code}{A measure category code. See
+\code{get_measure_categories()} for valid codes.}
 
-\item{measure_code}{test}
+\item{measure_code}{A measure code.}
 
-\item{return_caveats}{test}
+\item{return_caveats}{A logical. Whether or not to return the caveats for
+this data in a separate table. If \code{TRUE}, this will return a list with the
+two tables.}
 }
 \value{
 data
 }
 \description{
-insert title
+Get data by measure category.
 }
 \examples{
+\donttest{
 read_flat_data_extract(measure_category_code = "MYH-CANCER")
+read_flat_data_extract(measure_category_code = "MYH-CANCER", measure_code = "MYH0001")
+}
 }

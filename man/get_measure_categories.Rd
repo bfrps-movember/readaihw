@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-lists.R
 \name{get_measure_categories}
 \alias{get_measure_categories}
-\title{Title}
+\title{Get set of measure categories which can be used in \code{read_flat_data_extract()}.}
 \usage{
 get_measure_categories()
 }
@@ -10,8 +10,10 @@ get_measure_categories()
 data
 }
 \description{
-Title
+Get set of measure categories which can be used in \code{read_flat_data_extract()}.
 }
 \examples{
+\donttest{
 get_measure_categories()
+}
 }

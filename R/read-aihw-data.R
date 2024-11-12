@@ -1,7 +1,11 @@
 read_aihw_xlsx <- function(path) {
-  d_top <- readxl::read_xlsx(path, n_max = 50)
+  d_top <- readxl::read_xlsx(path, n_max = 50, .name_repair = "unique_quiet")
   skip_n <- min(which(!is.na(d_top[2]))) - 1
-  data <- readxl::read_xlsx(path = path, skip = skip_n) |>
+  data <- readxl::read_xlsx(
+    path = path,
+    skip = skip_n,
+    .name_repair = "unique_quiet"
+  ) |>
     janitor::clean_names()
 
   data[, colSums(is.na(data)) < nrow(data)]

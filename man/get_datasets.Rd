@@ -2,7 +2,7 @@
 % Please edit documentation in R/get-lists.R
 \name{get_datasets}
 \alias{get_datasets}
-\title{Title}
+\title{Show available datasets.}
 \usage{
 get_datasets()
 }
@@ -10,8 +10,10 @@ get_datasets()
 data
 }
 \description{
-Title
+Show available datasets.
 }
 \examples{
+\donttest{
 get_datasets()
+}
 }
