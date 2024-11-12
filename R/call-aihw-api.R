@@ -1,21 +1,3 @@
-#' Base URL for the MyHospitals API
-base_url <- "https://myhospitalsapi.aihw.gov.au/api/v1/"
-
-get_api_urls <- function() {
-  c(
-    "caveats",
-    "datasets",
-    "measure-downloads",
-    "reporting-unit-downloads",
-    "simple-downloads/download-codes",
-    "measure-categories",
-    "measures",
-    "reported-measure-categories",
-    "reported-measures",
-    "reporting-unit-types"
-  )
-}
-
 #' Call the AIHW API
 #'
 #' @param api_url url
@@ -29,7 +11,7 @@ get_api_urls <- function() {
 #' }
 call_aihw_api <- function(api_url) {
   # Create the base request
-  req <- httr2::request(paste0(base_url, api_url))
+  req <- httr2::request(paste0(get_base_url(), api_url))
 
   # Choose the appropriate method and perform the request
   resp <- httr2::req_perform(req)
@@ -46,13 +28,6 @@ call_aihw_api <- function(api_url) {
   httr2::resp_body_json(resp)
 }
 
-# Example usage:
-# result <- call_api("datasets")
-#
-# result$result |> map(unlist) |> bind_rows() |> View()
-#
-# res2 <- call_api("datasets/2/data-items")
-#
-# res3 <- call_api("measure-downloads/measure-download-codes")
-
-# res4 <- call_aihw_api("measure-downloads/myh-adm")
+get_base_url <- function() {
+  "https://myhospitalsapi.aihw.gov.au/api/v1/"
+}
