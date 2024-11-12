@@ -4,9 +4,9 @@
 \name{readaihw-package}
 \alias{readaihw}
 \alias{readaihw-package}
-\title{readaihw: Read Data From the Australian Institute Of Health And Welfare Using The MyHospitals API}
+\title{readaihw: Read Hospital Data From the Australian Institute Of Health And Welfare Using The MyHospitals API}
 \description{
-Provides a wrapper around the MyHospitals API so that it can be accessed directly from R.
+Uses the MyHospitals API so that hospital data from the AIHW can be accessed from R.
 }
 \seealso{
 Useful links:

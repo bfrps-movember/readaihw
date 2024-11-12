@@ -1,13 +1,16 @@
 Package: readaihw
-Title: Read Data From the Australian Institute Of Health And Welfare Using The MyHospitals API
+Title: Read Hospital Data From the Australian Institute Of Health And Welfare
+    Using The MyHospitals API
 Version: 0.0.0.9000
 Authors@R: 
     person("Rex", "Parsons", , "rex.parsons94@gmaqil.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-6053-8174"))
-Description: Uses the MyHospitals API so that data from the AIHW can be 
+Description: Uses the MyHospitals API so that hospital data from the AIHW can be
     accessed from R.
 License: MIT + file LICENSE
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
@@ -23,6 +26,8 @@ Imports:
     janitor,
     purrr,
     readxl,
+    rlang,
     stringr
 Depends: 
     R (>= 4.1.0)
+VignetteBuilder: knitr
