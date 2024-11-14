@@ -13,7 +13,7 @@
 #' }
 get_measures_from_category <- function(measure_category_code, trim = TRUE) {
   url <- as.character(glue::glue("measure-categories/{measure_category_code}/measures"))
-  d <- call_aihw_api(url)$result |>
+  d <- call_myhosp_api(url)$result |>
     tidy_resp_to_df()
 
   if (trim) {
@@ -67,7 +67,7 @@ read_dataset_ids <- function(ids, return_caveats = FALSE, tidy_data = TRUE) {
 
 read_dataset_by_id <- function(id) {
   url <- as.character(glue::glue("datasets/{id}/data-items"))
-  call_aihw_api(url)$result |> tidy_resp_to_df()
+  call_myhosp_api(url)$result |> tidy_resp_to_df()
 }
 
 tidy_dataset <- function(dataset) {

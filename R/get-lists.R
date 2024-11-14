@@ -8,7 +8,7 @@
 #' get_hospital_mappings()
 #' }
 get_hospital_mappings <- function() {
-  call_aihw_api("reporting-units-downloads/mappings")
+  call_myhosp_api("reporting-units-downloads/mappings")
 }
 
 #' Get set of measure categories which can be used in `read_flat_data_extract()`.
@@ -21,7 +21,7 @@ get_hospital_mappings <- function() {
 #' get_measure_categories()
 #' }
 get_measure_categories <- function() {
-  res <- call_aihw_api("measure-categories")
+  res <- call_myhosp_api("measure-categories")
   tidy_resp_to_df(res$result)
 }
 
@@ -38,7 +38,7 @@ get_measure_categories <- function() {
 #' get_datasets()
 #' }
 get_datasets <- function(tidy_data = TRUE) {
-  res <- call_aihw_api("datasets")
+  res <- call_myhosp_api("datasets")
   d <- tidy_resp_to_df(res$result)
 
   if (tidy_data) {
@@ -58,7 +58,7 @@ get_datasets <- function(tidy_data = TRUE) {
 #' get_measure_download_codes()
 #' }
 get_measure_download_codes <- function() {
-  res <- call_aihw_api("measure-downloads/measure-download-codes")
+  res <- call_myhosp_api("measure-downloads/measure-download-codes")
   tidy_resp_to_df(res$result)
 }
 
@@ -79,5 +79,5 @@ get_measure_data <- function(measure_download_code) {
   assertthat::assert_that(assertthat::is.string(measure_download_code))
   assertthat::assert_that(measure_download_code %in% get_measure_download_codes()$datasheet_code)
 
-  call_aihw_api(paste0("measure-downloads/", measure_download_code))
+  call_myhosp_api(paste0("measure-downloads/", measure_download_code))
 }

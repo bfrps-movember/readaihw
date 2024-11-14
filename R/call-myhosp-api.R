@@ -1,4 +1,4 @@
-#' Call the AIHW API
+#' Call the MyHospitals API
 #'
 #' @param api_url url
 #'
@@ -7,9 +7,9 @@
 #'
 #' @examples
 #' \donttest{
-#' call_aihw_api("measure-downloads/myh-adm")
+#' call_myhosp_api("measure-downloads/myh-adm")
 #' }
-call_aihw_api <- function(api_url) {
+call_myhosp_api <- function(api_url) {
   # Create the base request
   req <- httr2::request(paste0(get_base_url(), api_url))
 

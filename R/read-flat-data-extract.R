@@ -29,7 +29,7 @@ read_flat_data_extract <- function(measure_category_code, measure_code, return_c
 
   max_rows <- 1000
 
-  res <- call_aihw_api(paste0("flat-data-extract/", measure_category_code, "?skip=0&top=5", measure_code_str))
+  res <- call_myhosp_api(paste0("flat-data-extract/", measure_category_code, "?skip=0&top=5", measure_code_str))
 
   total_rows <- res$result$pagination$total_results_available
 
@@ -59,7 +59,7 @@ tidy_resp_to_df <- function(result) {
 }
 
 call_flat_data_segment <- function(url, skip, top, measure_code_str) {
-  res <- call_aihw_api(as.character(glue::glue("{url}?skip={skip}&top={top}{measure_code_str}")))
+  res <- call_myhosp_api(as.character(glue::glue("{url}?skip={skip}&top={top}{measure_code_str}")))
   tidy_resp_to_df(res$result$data)
 }
 
