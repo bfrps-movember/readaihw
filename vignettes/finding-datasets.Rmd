@@ -47,10 +47,10 @@ d_mental_health_admissions <- read_dataset_ids(dataset_ids)
 
 # aggregate by reporting period
 d_mental_health_admissions |>
-  filter(reporting_unit_summary_reporting_unit_type_reporting_unit_type_code == "H") |>
+  filter(unit_type_name == "Hospital") |>
   summarize(
-    mental_health_admission_n = sum(as.numeric(value), na.rm = TRUE),
-    .by = c(reporting_start_date, reporting_end_date)
+    mental_health_admission_n = sum(as.numeric(number_of_admissions_to_hospital), na.rm = TRUE),
+    .by = c(start_date, end_date)
   )
 ```
 

@@ -4,7 +4,7 @@
 \alias{read_dataset_ids}
 \title{Read (multiple) datasets by id}
 \usage{
-read_dataset_ids(ids, return_caveats = FALSE)
+read_dataset_ids(ids, return_caveats = FALSE, tidy_data = TRUE)
 }
 \arguments{
 \item{ids}{id of the dataset. See \code{get_datasets()}.}
@@ -12,6 +12,9 @@ read_dataset_ids(ids, return_caveats = FALSE)
 \item{return_caveats}{A logical. Whether or not to return the caveats for
 this data in a separate table. If \code{TRUE}, this will return a list with the
 two tables.}
+
+\item{tidy_data}{A logical. Whether or not to tidy the data (rename
+columns and remove columns which only have one unique value).}
 }
 \value{
 data
