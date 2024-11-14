@@ -4,7 +4,11 @@
 \alias{get_datasets}
 \title{Show available datasets.}
 \usage{
-get_datasets()
+get_datasets(tidy_data = TRUE)
+}
+\arguments{
+\item{tidy_data}{A logical. Whether or not to tidy the data (rename
+columns and remove columns which only have one unique value).}
 }
 \value{
 data

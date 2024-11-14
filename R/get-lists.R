@@ -27,6 +27,9 @@ get_measure_categories <- function() {
 
 #' Show available datasets.
 #'
+#' @param tidy_data A logical. Whether or not to tidy the data (rename
+#' columns and remove columns which only have one unique value).
+#'
 #' @return data
 #' @export
 #'
@@ -34,9 +37,15 @@ get_measure_categories <- function() {
 #' \donttest{
 #' get_datasets()
 #' }
-get_datasets <- function() {
+get_datasets <- function(tidy_data = TRUE) {
   res <- call_aihw_api("datasets")
-  tidy_resp_to_df(res$result)
+  d <- tidy_resp_to_df(res$result)
+
+  if (tidy_data) {
+    d <- rename_dataset(d)
+  }
+
+  d
 }
 
 #' Get set of measure download codes that can be used in `get_measure_data()`.

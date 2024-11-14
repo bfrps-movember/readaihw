@@ -42,7 +42,7 @@ get_measures_from_category <- function(measure_category_code, trim = TRUE) {
 #' read_dataset_ids(c(1, 2))
 #' }
 read_dataset_ids <- function(ids, return_caveats = FALSE, tidy_data = TRUE) {
-  d_datasets <- get_datasets() |>
+  d_datasets <- get_datasets(tidy_data = FALSE) |>
     dplyr::filter(data_set_id %in% ids)
 
   if (any(!ids %in% d_datasets$data_set_id)) {
@@ -107,8 +107,9 @@ rename_dataset <- function(dataset) {
     unit_code = "reporting_unit_summary_reporting_unit_code",
     unit_name = "reporting_unit_summary_reporting_unit_name",
     unit_type_code = "reporting_unit_summary_reporting_unit_type_reporting_unit_type_code",
-    unit_type_name = "reporting_unit_summary_reporting_unit_type_reporting_unit_type_name"
+    unit_type_name = "reporting_unit_summary_reporting_unit_type_reporting_unit_type_name",
+    "value"
   )
 
-  dplyr::select(dataset, dplyr::any_of(lkp), value)
+  dplyr::select(dataset, dplyr::any_of(lkp))
 }
