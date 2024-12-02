@@ -7,10 +7,8 @@
 #' @return data
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()  && curl::has_internet()
 #' get_measures_from_category("MYH-CANCER")
-#' }
 get_measures_from_category <- function(measure_category_code, trim = TRUE) {
   url <- as.character(glue::glue("measure-categories/{measure_category_code}/measures"))
   d <- call_myhosp_api(url)$result |>
@@ -37,10 +35,8 @@ get_measures_from_category <- function(measure_category_code, trim = TRUE) {
 #' @return data
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()  && curl::has_internet()
 #' read_dataset_ids(c(1, 2))
-#' }
 read_dataset_ids <- function(ids, return_caveats = FALSE, tidy_data = TRUE) {
   d_datasets <- get_datasets(tidy_data = FALSE) |>
     dplyr::filter(data_set_id %in% ids)

@@ -18,7 +18,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Rex Parsons \email{rex.parsons94@gmaqil.com} (\href{https://orcid.org/0000-0002-6053-8174}{ORCID})
+\strong{Maintainer}: Rex Parsons \email{rex.parsons94@gmail.com} (\href{https://orcid.org/0000-0002-6053-8174}{ORCID})
 
 }
 \keyword{internal}

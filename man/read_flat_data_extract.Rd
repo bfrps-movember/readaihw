@@ -27,8 +27,8 @@ data
 Get data by measure category.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()  && curl::has_internet()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 read_flat_data_extract(measure_category_code = "MYH-CANCER")
 read_flat_data_extract(measure_category_code = "MYH-CANCER", measure_code = "MYH0001")
-}
+\dontshow{\}) # examplesIf}
 }

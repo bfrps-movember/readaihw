@@ -19,7 +19,7 @@ data
 Find the available measures within a measure category.
 }
 \examples{
-\donttest{
+\dontshow{if (interactive()  && curl::has_internet()) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 get_measures_from_category("MYH-CANCER")
-}
+\dontshow{\}) # examplesIf}
 }

@@ -10,11 +10,9 @@
 #' @return data
 #' @export
 #'
-#' @examples
-#' \donttest{
+#' @examplesIf interactive()  && curl::has_internet()
 #' read_flat_data_extract(measure_category_code = "MYH-CANCER")
 #' read_flat_data_extract(measure_category_code = "MYH-CANCER", measure_code = "MYH0001")
-#' }
 read_flat_data_extract <- function(measure_category_code, measure_code, return_caveats = FALSE) {
   assertthat::assert_that(assertthat::is.string(measure_category_code))
   assertthat::assert_that(measure_category_code %in% get_measure_categories()$measure_category_code)
