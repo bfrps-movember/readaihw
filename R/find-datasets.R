@@ -52,10 +52,22 @@ read_dataset_ids <- function(ids, return_caveats = FALSE, tidy_data = TRUE) {
     dplyr::bind_rows() |>
     tidy_flat_data_extract(return_caveats = return_caveats)
 
-  d_combined <- dplyr::left_join(d_datasets, dframes, by = "data_set_id")
+  l <- list()
+
+  if(return_caveats) {
+    d_combined <- dplyr::left_join(d_datasets, dframes$data, by = "data_set_id")
+    l$caveats <- dframes$d_caveats
+  } else {
+    d_combined <- dplyr::left_join(d_datasets, dframes, by = "data_set_id")
+  }
 
   if (tidy_data) {
     d_combined <- tidy_dataset(d_combined)
+  }
+
+  if(return_caveats) {
+    l$data <- d_combined
+    return(l)
   }
 
   d_combined
