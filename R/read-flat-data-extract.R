@@ -57,6 +57,8 @@ tidy_resp_to_df <- function(result) {
 }
 
 call_flat_data_segment <- function(url, skip, top, measure_code_str) {
+  skip <- format(skip, scientific = FALSE)
+  top <- format(top, scientific = FALSE)
   res <- call_myhosp_api(as.character(glue::glue("{url}?skip={skip}&top={top}{measure_code_str}")))
   tidy_resp_to_df(res$result$data)
 }
