@@ -10,7 +10,7 @@
 #' @return data
 #' @export
 #'
-#' @examplesIf interactive()  && curl::has_internet()
+#' @examplesIf interactive() && curl::has_internet()
 #' read_flat_data_extract(measure_category_code = "MYH-CANCER")
 #' read_flat_data_extract(measure_category_code = "MYH-CANCER", measure_code = "MYH0001")
 read_flat_data_extract <- function(measure_category_code, measure_code, return_caveats = FALSE) {
@@ -67,13 +67,12 @@ tidy_flat_data_extract <- function(data, return_caveats) {
   if (any(stringr::str_detect(names(data), "caveat"))) {
     if ("caveat" %in% names(data)) {
       d_caveats <- data |>
-        dplyr::select(caveat:dplyr::last_col()) |>
+        dplyr::select(dplyr::starts_with("caveat")) |>
         dplyr::filter(!is.na(caveat))
 
       data <- data |>
-        dplyr::select(1:caveat) |>
         dplyr::filter(is.na(caveat)) |>
-        dplyr::select(-caveat)
+        dplyr::select(-dplyr::starts_with("caveat"))
     } else {
       d_caveats <- data |>
         dplyr::select(
