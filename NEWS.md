@@ -1,4 +1,4 @@
-# readaihw (development version)
+# readaihw 0.0.2
 
 * update README to use MSH for example ED presentations extract/analysis.
 
